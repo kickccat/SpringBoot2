@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="console" />
         <module name="core" />
+        <module name="web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="console" target="10" />
       <module name="core" target="10" />
       <module name="guess-the-number-game" target="10" />
+      <module name="web" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>
