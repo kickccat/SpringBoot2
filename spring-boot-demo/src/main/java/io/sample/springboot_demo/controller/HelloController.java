@@ -1,5 +1,6 @@
 package io.sample.springboot_demo.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,6 +12,18 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class HelloController {
     
+    @Value("${book.name}")
+    private String name;
+    
+    @Value("${book.author}")
+    private String author;
+    
+    @Value("${book.isbn}")
+    private String isbn;
+    
+    @Value("${book.description}")
+    private String description;
+    
     @GetMapping("/sayHello")
     public String hello() {
         return "Hello Spring Boot";
@@ -19,14 +32,14 @@ public class HelloController {
     @GetMapping("/books")
     public Object getAll(@RequestParam("page") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
         Map<String, Object> book = new HashMap<>();
-        book.put("name", "World");
-        book.put("author", "John");
-        book.put("isbn", "aabbcc");
+        book.put("Name", "World");
+        book.put("Author", "John");
+        book.put("ISBN", "aabbcc");
         
         Map<String, Object> book2 = new HashMap<>();
-        book2.put("name", "Earth");
-        book2.put("author", "Alice");
-        book2.put("isbn", "ddffgg");
+        book2.put("Name", "Earth");
+        book2.put("Author", "Alice");
+        book2.put("ISBN", "ddffgg");
     
         List<Map> contents = new ArrayList<>();
         contents.add(book);
@@ -49,9 +62,10 @@ public class HelloController {
         System.out.println("id: " + id);
         
         Map<String, Object> books = new HashMap<>();
-        books.put("name", "好好学习");
-        books.put("ISBN", "1234567890");
-        books.put("author", "无名氏");
+        books.put("Name", name);
+        books.put("ISBN", isbn);
+        books.put("Author", author);
+        books.put("Description", description);
         
         return books;
     }
@@ -60,9 +74,9 @@ public class HelloController {
     public Object addBook(@RequestParam("name") String name, @RequestParam("author") String author,
                           @RequestParam("isbn") String isbn) {
         Map<String, Object> book = new HashMap<>();
-        book.put("name", name);
-        book.put("author", author);
-        book.put("isbn", isbn);
+        book.put("Name", name);
+        book.put("Author", author);
+        book.put("ISBN", isbn);
         return book;
     }
 }

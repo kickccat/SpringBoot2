@@ -6,3 +6,75 @@
 2018-08-16 14:26:31.298 DEBUG 20204 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
 2018-08-16 14:26:31.300  INFO 20204 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
 2018-08-16 14:26:34.366  INFO 20204 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 3.429 seconds (JVM running for 4.374)
+2018-08-16 14:45:42.790  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 8096 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:45:42.791 DEBUG 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:45:42.794  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:45:45.866  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 3.441 seconds (JVM running for 4.411)
+2018-08-16 14:49:34.177  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 8096 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:49:34.177 DEBUG 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:49:34.178  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:49:34.616  WARN 8096 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloController': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'name' in value "${name}, 这本书不错"
+2018-08-16 14:49:34.635 ERROR 8096 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'helloController': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'name' in value "${name}, 这本书不错"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:398) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:330) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1258) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1246) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+	at io.sample.springboot_demo.SpringBootDemoApplication.main(SpringBootDemoApplication.java:10) [classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.4.RELEASE.jar:2.0.4.RELEASE]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'name' in value "${name}, 这本书不错"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:172) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:228) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:88) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:62) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:535) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:137) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:133) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:145) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211) ~[spring-core-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:839) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1083) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
+	... 22 common frames omitted
+
+2018-08-16 14:50:23.171  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 8096 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:50:23.172 DEBUG 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:50:23.172  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:50:23.728  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 0.591 seconds (JVM running for 282.278)
+2018-08-16 14:55:58.089  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 8096 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:55:58.089 DEBUG 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:55:58.090  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:55:58.704  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 0.647 seconds (JVM running for 617.256)
+2018-08-16 14:57:50.699  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 8096 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:57:50.699 DEBUG 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:57:50.700  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:57:51.139  INFO 8096 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 0.476 seconds (JVM running for 729.694)
