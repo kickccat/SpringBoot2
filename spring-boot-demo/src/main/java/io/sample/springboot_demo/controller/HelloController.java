@@ -1,6 +1,7 @@
 package io.sample.springboot_demo.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import io.sample.springboot_demo.domain.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,17 +13,12 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class HelloController {
     
-    @Value("${book.name}")
-    private String name;
+    private final Book book;
     
-    @Value("${book.author}")
-    private String author;
-    
-    @Value("${book.isbn}")
-    private String isbn;
-    
-    @Value("${book.description}")
-    private String description;
+    @Autowired
+    public HelloController(Book book) {
+        this.book = book;
+    }
     
     @GetMapping("/sayHello")
     public String hello() {
@@ -59,15 +55,8 @@ public class HelloController {
      */
     @GetMapping("/books/{id}")
     public Object getById(@PathVariable("id") long id) {
-        System.out.println("id: " + id);
         
-        Map<String, Object> books = new HashMap<>();
-        books.put("Name", name);
-        books.put("ISBN", isbn);
-        books.put("Author", author);
-        books.put("Description", description);
-        
-        return books;
+        return book;
     }
     
     @PostMapping("/books")
