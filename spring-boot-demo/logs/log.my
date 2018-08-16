@@ -1,0 +1,4 @@
+2018-08-16 14:14:57.695  INFO 20520 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Starting SpringBootDemoApplication on yi with PID 20520 (C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo\target\classes started by yi.zhou in C:\Users\yi.zhou\Workspace\Github\Practice\SpringBoot2\spring-boot-demo)
+2018-08-16 14:14:57.698 DEBUG 20520 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-16 14:14:57.699  INFO 20520 --- [restartedMain] i.s.s.SpringBootDemoApplication          : No active profile set, falling back to default profiles: default
+2018-08-16 14:15:00.755  INFO 20520 --- [restartedMain] i.s.s.SpringBootDemoApplication          : Started SpringBootDemoApplication in 3.379 seconds (JVM running for 4.384)
