@@ -1,7 +1,5 @@
 package io.sample.springboot_demo.controller;
 
-import io.sample.springboot_demo.domain.Book;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,15 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v0")
 public class HelloController {
-    
-    private final Book book;
-    
-    @Autowired
-    public HelloController(Book book) {
-        this.book = book;
-    }
+//
+//    private final Book book;
+//
+//    @Autowired
+//    public HelloController(Book book) {
+//        this.book = book;
+//    }
     
     @GetMapping("/sayHello")
     public String hello() {
@@ -56,7 +54,7 @@ public class HelloController {
     @GetMapping("/books/{id}")
     public Object getById(@PathVariable("id") long id) {
         
-        return book;
+        return null;
     }
     
     @PostMapping("/books")

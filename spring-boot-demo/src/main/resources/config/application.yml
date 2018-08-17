@@ -1,14 +1,9 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /
-
-logging:
-  level:
-    root: warn
-    io.sample: debug
-
-  file: logs/log.my
+spring:
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: always
 
 book:
   name: 好好学习

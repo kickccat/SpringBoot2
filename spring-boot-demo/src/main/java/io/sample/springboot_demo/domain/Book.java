@@ -1,13 +1,21 @@
 package io.sample.springboot_demo.domain;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
-@Component
-@ConfigurationProperties(prefix = "book")
+@Entity
 public class Book {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    
+    private int status;
     
     private String name;
     
