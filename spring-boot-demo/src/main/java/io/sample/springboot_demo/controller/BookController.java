@@ -58,4 +58,29 @@ public class BookController {
     public void deleteBook(@PathVariable("id") long id) {
         bookService.deleteOne(id);
     }
+    
+    @PostMapping("/books/byAuthor")
+    public List<Book> findByAuthorName(@RequestParam("author") String author) {
+        return bookService.findByAuthor(author);
+    }
+    
+    @PostMapping("/books/byAuthorAndStatus")
+    public List<Book> findByAuthorAndStatus(@RequestParam("author") String author, @RequestParam("status") int status) {
+        return bookService.findByAuthorAndStatus(author, status);
+    }
+    
+    @PostMapping("/books/byDescriptionEndsWith")
+    public List<Book> findByDescEndsWith(@RequestParam("description") String desc) {
+        return bookService.findByDescriptionEndsWith(desc);
+    }
+    
+    @PostMapping("/books/byJPQL")
+    public List<Book> findByJPQL(@RequestParam("len") int len) {
+        return bookService.findByJPQL(len);
+    }
+    
+    @PostMapping("/books/bySQL")
+    public List<Book> findBySQL(@RequestParam("len") int len) {
+        return bookService.findBySQL(len);
+    }
 }

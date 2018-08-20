@@ -32,4 +32,24 @@ public class BookService {
     public void deleteOne(long id) {
         bookRepository.deleteById(id);
     }
+    
+    public List<Book> findByAuthor(String author) {
+        return bookRepository.findByAuthor(author);
+    }
+    
+    public List<Book> findByAuthorAndStatus(String author, int status) {
+        return bookRepository.findByAuthorAndStatus(author, status);
+    }
+    
+    public List<Book> findByDescriptionEndsWith(String desc) {
+        return bookRepository.findByDescriptionEndsWith(desc);
+    }
+    
+    public List<Book> findByJPQL(int len) {
+        return bookRepository.findByJPQL(len);
+    }
+    
+    public List<Book> findBySQL(int len) {
+        return bookRepository.findBySQL(len);
+    }
 }
