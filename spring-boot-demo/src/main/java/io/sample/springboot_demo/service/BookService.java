@@ -52,4 +52,12 @@ public class BookService {
     public List<Book> findBySQL(int len) {
         return bookRepository.findBySQL(len);
     }
+    
+    public int updateByJPQL(int status, long id) {
+        return bookRepository.updateByJPQL(status, id);
+    }
+    
+    public int deleteByJPQL(long id) {
+        return bookRepository.deleteByJPQL(id);
+    }
 }

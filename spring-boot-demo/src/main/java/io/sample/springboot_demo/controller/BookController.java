@@ -83,4 +83,14 @@ public class BookController {
     public List<Book> findBySQL(@RequestParam("len") int len) {
         return bookService.findBySQL(len);
     }
+    
+    @PostMapping("/books/by")
+    public int findBy(@RequestParam("status") int status, @RequestParam("id") long id) {
+        return bookService.updateByJPQL(status, id);
+    }
+    
+    @PostMapping("/books/delete")
+    public int deleteBy(@RequestParam("id") long id) {
+        return bookService.deleteByJPQL(id);
+    }
 }
