@@ -39,6 +39,9 @@
                         <span th:case="2">已读</span>
                         <span th:case="*">状态</span>
                     </td>
+                    <td>
+                        <a href="#" th:href="@{/books/{id}/update(id=${book.id})}">更新</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

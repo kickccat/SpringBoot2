@@ -36,7 +36,8 @@ public class BookController {
     }
     
     @GetMapping("/books/input")
-    public String inputPage() {
+    public String inputPage(Model model) {
+        model.addAttribute("book", new Book());
         return "input";
     }
     
@@ -44,5 +45,12 @@ public class BookController {
     public String addBook(Book book) {
         bookService.addUpdateBook(book);
         return "redirect:/books";
+    }
+    
+    @GetMapping("/books/{id}/update")
+    public String update(@PathVariable("id") long id, Model model) {
+        Book book = bookService.getOne(id);
+        model.addAttribute("book", book);
+        return "input";
     }
 }
