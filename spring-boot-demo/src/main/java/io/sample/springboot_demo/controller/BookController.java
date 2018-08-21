@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -32,5 +33,16 @@ public class BookController {
         Book book = bookService.getOne(id);
         model.addAttribute("book", book);
         return "book";
+    }
+    
+    @GetMapping("/books/input")
+    public String inputPage() {
+        return "input";
+    }
+    
+    @PostMapping("/books")
+    public String addBook(Book book) {
+        bookService.addUpdateBook(book);
+        return "redirect:/books";
     }
 }
