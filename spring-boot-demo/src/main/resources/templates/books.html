@@ -15,7 +15,7 @@
 
     <div class="container">
         <h2 class="page-header">书单列表</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>#</th>
@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="book, iterStat:${books}" th:class="${iterStat.even}?'bg-success':'bg-danger'">
+                <tr th:each="book, iterStat:${books}">
                     <td th:text="${iterStat.count}">1</td>
                     <td th:text="${book.name}">书名</td>
                     <td th:text="${book.author}">作者</td>
