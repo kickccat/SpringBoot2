@@ -4,6 +4,7 @@ import io.sample.springboot_demo.domain.Book;
 import io.sample.springboot_demo.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class BookService {
     }
     
     public Book getOne(long id) {
-        return bookRepository.findById(id).orElseThrow();
+        return bookRepository.getOne(id);
     }
     
     public void deleteOne(long id) {
@@ -53,10 +54,12 @@ public class BookService {
         return bookRepository.findBySQL(len);
     }
     
+    @Transactional
     public int updateByJPQL(int status, long id) {
         return bookRepository.updateByJPQL(status, id);
     }
     
+    @Transactional
     public int deleteByJPQL(long id) {
         return bookRepository.deleteByJPQL(id);
     }

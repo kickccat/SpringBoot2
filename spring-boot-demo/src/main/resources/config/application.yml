@@ -4,6 +4,8 @@ spring:
   output:
     ansi:
       enabled: always
+  thymeleaf:
+    cache: false
 
 book:
   name: 好好学习

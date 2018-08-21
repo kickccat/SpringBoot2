@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css">
+
+    <title>书单详情</title>
+</head>
+
+<body th:object="${book}">
+    <div class="container" style="max-width: 700px">
+
+        <h2 class="page-header" style="margin-top: 50px">详情</h2>
+
+        <div class="well">
+            <p>
+                <strong>书名：</strong><span th:text="*{name}">Python零基础</span>
+            </p>
+            <p>
+                <strong>作者：</strong><span th:text="*{author}">张志强</span>
+            </p>
+            <p>
+                <strong>说明：</strong><span th:text="*{description}">电子书</span>
+            </p>
+            <p th:switch="*{status}">
+                <strong>状态：</strong>
+                <span th:case="0">想读</span>
+                <span th:case="1">在读</span>
+                <span th:case="2">已读</span>
+            </p>
+        </div>
+
+        <div class="alert alert-success" th:unless="*{status == 0}">
+            <strong>不错</strong>,你已经开始行动了
+        </div>
+        <div class="alert alert-warning" th:if="*{status == 0}">
+            <strong>注意</strong>,你还没开始行动
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
+</body>
+</html>

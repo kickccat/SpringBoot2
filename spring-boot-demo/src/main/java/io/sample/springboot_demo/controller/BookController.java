@@ -3,12 +3,14 @@ package io.sample.springboot_demo.controller;
 import io.sample.springboot_demo.domain.Book;
 import io.sample.springboot_demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
 public class BookController {
     
     private final BookService bookService;
@@ -19,78 +21,16 @@ public class BookController {
     }
     
     @GetMapping("/books")
-    public List<Book> listAllBooks() {
-        return bookService.getAllBooks();
-    }
-    
-    @PostMapping("/books")
-    public Book addOneBook(@RequestParam("name") String name, @RequestParam("author") String author,
-                           @RequestParam("description") String description, @RequestParam("status") int status) {
-        Book book = new Book();
-        book.setAuthor(author);
-        book.setDescription(description);
-        book.setName(name);
-        book.setStatus(status);
-        
-        return bookService.addUpdateBook(book);
+    public String listAll(Model model) {
+        List<Book> books = bookService.getAllBooks();
+        model.addAttribute("books", books);
+        return "books";
     }
     
     @GetMapping("/books/{id}")
-    public Book getOne(@PathVariable("id") long id) {
-        return bookService.getOne(id);
-    }
-    
-    @PutMapping("/books")
-    public Book updateBook(@RequestParam("name") String name, @RequestParam("author") String author,
-                           @RequestParam("description") String description, @RequestParam("status") int status,
-                           @RequestParam("id") long id) {
-        Book book = new Book();
-        book.setId(id);
-        book.setAuthor(author);
-        book.setDescription(description);
-        book.setName(name);
-        book.setStatus(status);
-    
-        return bookService.addUpdateBook(book);
-    }
-    
-    @DeleteMapping("/books/{id}")
-    public void deleteBook(@PathVariable("id") long id) {
-        bookService.deleteOne(id);
-    }
-    
-    @PostMapping("/books/byAuthor")
-    public List<Book> findByAuthorName(@RequestParam("author") String author) {
-        return bookService.findByAuthor(author);
-    }
-    
-    @PostMapping("/books/byAuthorAndStatus")
-    public List<Book> findByAuthorAndStatus(@RequestParam("author") String author, @RequestParam("status") int status) {
-        return bookService.findByAuthorAndStatus(author, status);
-    }
-    
-    @PostMapping("/books/byDescriptionEndsWith")
-    public List<Book> findByDescEndsWith(@RequestParam("description") String desc) {
-        return bookService.findByDescriptionEndsWith(desc);
-    }
-    
-    @PostMapping("/books/byJPQL")
-    public List<Book> findByJPQL(@RequestParam("len") int len) {
-        return bookService.findByJPQL(len);
-    }
-    
-    @PostMapping("/books/bySQL")
-    public List<Book> findBySQL(@RequestParam("len") int len) {
-        return bookService.findBySQL(len);
-    }
-    
-    @PostMapping("/books/by")
-    public int findBy(@RequestParam("status") int status, @RequestParam("id") long id) {
-        return bookService.updateByJPQL(status, id);
-    }
-    
-    @PostMapping("/books/delete")
-    public int deleteBy(@RequestParam("id") long id) {
-        return bookService.deleteByJPQL(id);
+    public String listOne(@PathVariable("id") long id, Model model) {
+        Book book = bookService.getOne(id);
+        model.addAttribute("book", book);
+        return "book";
     }
 }
