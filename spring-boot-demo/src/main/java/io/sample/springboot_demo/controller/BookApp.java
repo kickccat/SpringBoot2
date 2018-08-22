@@ -3,6 +3,10 @@ package io.sample.springboot_demo.controller;
 import io.sample.springboot_demo.domain.Book;
 import io.sample.springboot_demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +25,12 @@ public class BookApp {
     @GetMapping("/books")
     public List<Book> listAllBooks() {
         return bookService.getAllBooks();
+    }
+    
+    @GetMapping("/books/pages")
+    public Page<Book> listAllBooksByPage(@PageableDefault(page = 0, size = 5, sort = {"id"},
+            direction = Sort.Direction.DESC) Pageable pageable) {
+        return bookService.getAllDivideByPage(pageable);
     }
     
     @PostMapping("/books")

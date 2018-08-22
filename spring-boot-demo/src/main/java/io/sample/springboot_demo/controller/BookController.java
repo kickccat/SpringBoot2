@@ -3,14 +3,16 @@ package io.sample.springboot_demo.controller;
 import io.sample.springboot_demo.domain.Book;
 import io.sample.springboot_demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 @Controller
 public class BookController {
@@ -21,11 +23,19 @@ public class BookController {
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
+
+//    @GetMapping("/books")
+//    public String listAll(Model model) {
+//        List<Book> books = bookService.getAllBooks();
+//        model.addAttribute("books", books);
+//        return "books";
+//    }
     
     @GetMapping("/books")
-    public String listAll(Model model) {
-        List<Book> books = bookService.getAllBooks();
-        model.addAttribute("books", books);
+    public String listAllByDividePage(@PageableDefault(page = 0, size = 5, sort = {"id"},
+            direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+        Page<Book> page1 = bookService.getAllDivideByPage(pageable);
+        model.addAttribute("page", page1);
         return "books";
     }
     
