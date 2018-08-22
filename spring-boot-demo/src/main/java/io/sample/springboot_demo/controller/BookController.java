@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -42,8 +43,11 @@ public class BookController {
     }
     
     @PostMapping("/books")
-    public String addBook(Book book) {
-        bookService.addUpdateBook(book);
+    public String addBook(Book book, final RedirectAttributes attributes) {
+        Book book1 = bookService.addUpdateBook(book);
+        if (book1 != null) {
+            attributes.addFlashAttribute("message", "<<" + book1.getName() + ">> 信息提交成功.");
+        }
         return "redirect:/books";
     }
     
