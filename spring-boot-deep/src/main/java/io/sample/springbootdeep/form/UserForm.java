@@ -18,13 +18,13 @@ public class UserForm {
     private String username;
     
     @NotBlank
-    @Length(min = 6)
+    @Length(min = 6, message = "密码至少需要6位")
     private String password;
     
     @NotBlank
     private String confirmPassword;
     
-    @Pattern(regexp = PHONE_REG)
+    @Pattern(regexp = PHONE_REG, message = "请输入正确的手机号")
     private String phone;
     
     @Email
