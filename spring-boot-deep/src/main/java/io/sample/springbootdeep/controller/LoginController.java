@@ -35,11 +35,19 @@ public class LoginController {
     
     @PostMapping("/register")
     public String registerReceiver(@Valid UserForm userForm, BindingResult result) {
+        boolean fulfill = true;
+        if (!userForm.identityPassword()) {
+            result.rejectValue("confirmPassword", "identity error", "两次密码不一致");
+            fulfill = false;
+        }
         if (result.hasErrors()) {
             List<FieldError> fieldErrors = result.getFieldErrors();
             for (FieldError error : fieldErrors) {
                 System.out.println(error.getField() + " : " + error.getDefaultMessage() + " : " + error.getCode());
             }
+            fulfill = false;
+        }
+        if (!fulfill) {
             return "register";
         }
         User user = userForm.convertToUser();

@@ -18,7 +18,7 @@ public class UserForm {
     private String username;
     
     @NotBlank
-    @Length(min = 6, message = "密码至少需要6位")
+    @Length(min = 6, max = 20, message = "密码至少需要6位")
     private String password;
     
     @NotBlank
@@ -27,6 +27,7 @@ public class UserForm {
     @Pattern(regexp = PHONE_REG, message = "请输入正确的手机号")
     private String phone;
     
+    @NotBlank
     @Email
     private String email;
     
@@ -44,5 +45,9 @@ public class UserForm {
             BeanUtils.copyProperties(userForm, user);
             return user;
         }
+    }
+    
+    public boolean identityPassword() {
+        return this.password.equals(this.confirmPassword);
     }
 }
