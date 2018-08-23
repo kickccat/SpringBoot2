@@ -47,7 +47,8 @@
                         <span th:case="*">状态</span>
                     </td>
                     <td>
-                        <a href="#" th:href="@{/books/{id}/update(id=${book.id})}">更新</a>
+                        <a href="#" th:href="@{/books/{id}/update(id=${book.id})}">更新</a>&nbsp;
+                        <a href="#" th:href="@{/books/{id}/delete(id=${book.id})}">删除</a>
                     </td>
                 </tr>
             </tbody>
@@ -55,11 +56,8 @@
 
         <nav>
             <ul class="pager">
-                <li
-                        class="previous"><a href="#" th:href="@{'/books?page='+${page.number-1}}"
-                                            th:unless="${page.first}">上一页</a></li>
-                <li
-                        class="next"><a href="#" th:href="@{/books(page=${page.number}+1)}" th:unless="${page.last}">下一页
+                <li class="previous"><a href="#" th:href="@{'/books?page='+${page.number-1}}" th:unless="${page.first}">上一页</a></li>
+                <li class="next"><a href="#" th:href="@{/books(page=${page.number}+1)}" th:unless="${page.last}">下一页
                 </a></li>
             </ul>
         </nav>

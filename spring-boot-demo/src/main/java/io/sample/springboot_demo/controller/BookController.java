@@ -67,4 +67,11 @@ public class BookController {
         model.addAttribute("book", book);
         return "input";
     }
+    
+    @GetMapping("/books/{id}/delete")
+    public String deleteById(@PathVariable("id") long id, final RedirectAttributes attributes) {
+        bookService.deleteOne(id);
+        attributes.addFlashAttribute("message", "删除成功");
+        return "redirect:/books";
+    }
 }

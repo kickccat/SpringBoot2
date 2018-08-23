@@ -6,6 +6,10 @@ spring:
       enabled: always
   thymeleaf:
     cache: false
+    mode: HTML
+  devtools:
+    restart:
+      trigger-file: .trigger
 
 book:
   name: 好好学习
