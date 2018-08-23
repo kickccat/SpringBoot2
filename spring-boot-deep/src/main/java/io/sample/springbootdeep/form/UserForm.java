@@ -2,15 +2,32 @@ package io.sample.springbootdeep.form;
 
 import io.sample.springbootdeep.domain.User;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.BeanUtils;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Data
 public class UserForm {
     
+    public static final String PHONE_REG = "^((13[0-9])|(15[^4])|(18[0235-9])|(17[0-8])|(147))\\d{8}$";
+    
+    @NotBlank
     private String username;
+    
+    @NotBlank
+    @Length(min = 6)
     private String password;
+    
+    @NotBlank
     private String confirmPassword;
-    private int phone;
+    
+    @Pattern(regexp = PHONE_REG)
+    private String phone;
+    
+    @Email
     private String email;
     
     public UserForm() {
