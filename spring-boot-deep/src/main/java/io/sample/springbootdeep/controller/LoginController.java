@@ -5,13 +5,12 @@ import io.sample.springbootdeep.domain.UserRepository;
 import io.sample.springbootdeep.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class LoginController {
@@ -24,7 +23,8 @@ public class LoginController {
     }
     
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        model.addAttribute("userForm", new UserForm());
         return "register";
     }
     
@@ -35,21 +35,14 @@ public class LoginController {
     
     @PostMapping("/register")
     public String registerReceiver(@Valid UserForm userForm, BindingResult result) {
-        boolean fulfill = true;
+        
         if (!userForm.identityPassword()) {
             result.rejectValue("confirmPassword", "identity error", "两次密码不一致");
-            fulfill = false;
         }
         if (result.hasErrors()) {
-            List<FieldError> fieldErrors = result.getFieldErrors();
-            for (FieldError error : fieldErrors) {
-                System.out.println(error.getField() + " : " + error.getDefaultMessage() + " : " + error.getCode());
-            }
-            fulfill = false;
-        }
-        if (!fulfill) {
             return "register";
         }
+        
         User user = userForm.convertToUser();
         userRepository.save(user);
         return "redirect:/login";
