@@ -2,11 +2,11 @@ package io.sample.springbootdeep.controller;
 
 import io.sample.springbootdeep.domain.User;
 import io.sample.springbootdeep.domain.UserRepository;
+import io.sample.springbootdeep.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -29,18 +29,9 @@ public class LoginController {
     }
     
     @PostMapping("/register")
-    public String registerReceiver(@RequestParam("username") String username,
-                                   @RequestParam("password") String password,
-                                   @RequestParam("email") String email,
-                                   @RequestParam("phone") Integer phone) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setPhone(phone);
-    
+    public String registerReceiver(UserForm userForm) {
+        User user = userForm.convertToUser();
         userRepository.save(user);
-    
         return "redirect:/login";
     }
 }
