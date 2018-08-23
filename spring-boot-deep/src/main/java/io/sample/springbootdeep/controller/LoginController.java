@@ -23,6 +23,11 @@ public class LoginController {
         return "register";
     }
     
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+    
     @PostMapping("/register")
     public String registerReceiver(@RequestParam("username") String username,
                                    @RequestParam("password") String password,
