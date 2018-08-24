@@ -2,8 +2,11 @@ package io.sample.springbootdeep.service;
 
 import io.sample.springbootdeep.domain.Book;
 import io.sample.springbootdeep.domain.BookRepository;
+import io.sample.springbootdeep.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -17,6 +20,10 @@ public class BookServiceImpl implements BookService {
     
     @Override
     public Book getBookById(Long id) {
-        return bookRepository.getOne(id);
+        Optional<Book> book = bookRepository.findById(id);
+        if (!book.isPresent()) {
+            throw new BookNotFoundException("书单信息不存在");
+        }
+        return book.get();
     }
 }
