@@ -50,6 +50,6 @@ public class LoginController {
     
     @GetMapping("/exception")
     public String testException() {
-        throw new RuntimeException();
+        throw new RuntimeException("测试异常处理");
     }
 }
