@@ -14,12 +14,11 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  profiles:
+    active: prod
+
+#  pattern:
+#    console: "%date [%thread] [%-5level] %logger{40} - %message%n"
+#    file: "%date [%thread] [%-5level] %logger{40} - %message%n"
 logging:
-  level:
-    root: info
-    io.sample: debug
-#    org.springframework: debug
-  pattern:
-    console: "%date [%thread] [%-5level] %logger{40} - %message%n"
-    file: "%date [%thread] [%-5level] %logger{40} - %message%n"
   file: logs/dev.log
