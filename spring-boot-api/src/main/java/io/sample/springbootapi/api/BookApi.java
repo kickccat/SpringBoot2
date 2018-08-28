@@ -2,7 +2,7 @@ package io.sample.springbootapi.api;
 
 import io.sample.springbootapi.domain.Book;
 import io.sample.springbootapi.service.BookService;
-import org.springframework.beans.BeanUtils;
+import io.sample.springbootapi.util.BookUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,15 +34,16 @@ public class BookApi {
     }
     
     @PostMapping("/books")
-    public ResponseEntity<?> saveBook(Book book) {
+    public ResponseEntity<?> saveBook(@RequestBody Book book) {
         Book book1 = bookService.saveBook(book);
         return new ResponseEntity<>(book1, HttpStatus.CREATED);
     }
     
     @PutMapping("/books/{id}")
-    public ResponseEntity<?> updateBook(@PathVariable("id") long id, Book book) {
+    public ResponseEntity<?> updateBook(@PathVariable("id") long id, @RequestBody Book book) {
         Book todoBook = bookService.getBookById(id);
-        BeanUtils.copyProperties(book, todoBook);
+//        BeanUtils.copyProperties(book, todoBook);
+        BookUtil.convertBook(book, todoBook);
         Book book1 = bookService.updateBook(todoBook);
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }

@@ -24,17 +24,17 @@ public class BookServiceImpl implements BookService {
     
     @Override
     public Book getBookById(long id) {
-        return bookRepository.getOne(id);
+        return bookRepository.findById(id).orElseThrow();
     }
     
     @Override
     public Book saveBook(Book book) {
-        return bookRepository.saveAndFlush(book);
+        return bookRepository.save(book);
     }
     
     @Override
     public Book updateBook(Book book) {
-        return bookRepository.saveAndFlush(book);
+        return bookRepository.save(book);
     }
     
     @Override

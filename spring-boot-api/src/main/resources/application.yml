@@ -20,6 +20,6 @@ logging:
     io.sample: debug
 #    org.springframework: debug
   pattern:
-#    console: "%date [%thread] [%-5level] %logger{40} - %message%n"
+    console: "%date [%thread] [%-5level] %logger{40} - %message%n"
     file: "%date [%thread] [%-5level] %logger{40} - %message%n"
   file: logs/dev.log
