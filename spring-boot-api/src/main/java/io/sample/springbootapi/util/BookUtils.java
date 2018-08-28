@@ -1,7 +1,5 @@
 package io.sample.springbootapi.util;
 
-import io.sample.springbootapi.domain.Book;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
@@ -9,14 +7,9 @@ import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookUtil {
+public class BookUtils {
     
-    public static void convertBook(Book book, Book todoBook) {
-        String[] ignorePropertyNames = getIgnorePropertyNames(book);
-        BeanUtils.copyProperties(book, todoBook, ignorePropertyNames);
-    }
-    
-    private static String[] getIgnorePropertyNames(Object source) {
+    public static String[] getIgnorePropertyNames(Object source) {
         final BeanWrapper beanWrapper = new BeanWrapperImpl(source);
         PropertyDescriptor[] properties = beanWrapper.getPropertyDescriptors();
         
