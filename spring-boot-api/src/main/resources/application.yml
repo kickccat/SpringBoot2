@@ -1,8 +1,4 @@
 spring:
-  thymeleaf:
-    mode: HTML
-    cache: false
-
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/springboot_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -15,10 +11,8 @@ spring:
     show-sql: true
 
   profiles:
-    active: prod
+    active: dev
 
 #  pattern:
 #    console: "%date [%thread] [%-5level] %logger{40} - %message%n"
 #    file: "%date [%thread] [%-5level] %logger{40} - %message%n"
-logging:
-  file: logs/dev.log

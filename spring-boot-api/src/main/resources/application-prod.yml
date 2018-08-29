@@ -2,3 +2,4 @@ logging:
   level:
     root: error
     io.sample: warn
+  file: logs/prod.log

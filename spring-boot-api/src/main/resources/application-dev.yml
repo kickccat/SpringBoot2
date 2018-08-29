@@ -2,3 +2,4 @@ logging:
   level:
     root: debug
     io.sample: debug
+  file: logs/dev.log
