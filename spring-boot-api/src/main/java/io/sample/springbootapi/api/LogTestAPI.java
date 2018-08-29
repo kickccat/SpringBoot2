@@ -10,11 +10,14 @@ public class LogTestAPI {
     
     @GetMapping("/log")
     public String log() {
-        log.info("Info ---------- log");
-        log.warn("Warn ---------- log");
-        log.error("Error ---------- log");
-        log.debug("Debug ---------- log");
-        log.trace("Trace ---------- log");
+        String name = "Java";
+        String email = "java@java.com";
+//        log.info("Info ---------- log");
+//        log.warn("Warn ---------- log");
+//        log.error("Error ---------- log");
+//        log.debug("Debug ---------- log");
+//        log.trace("Trace ---------- log");
+        log.info("Tets: ------------------- [name: {}, email:{}] ------------------------", name, email);
         return "logTest";
     }
 }
