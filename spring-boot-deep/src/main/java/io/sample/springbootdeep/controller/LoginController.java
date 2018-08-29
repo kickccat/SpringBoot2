@@ -9,13 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 public class LoginController {
     
     private final UserRepository userRepository;
+    
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
     
     @Autowired
     public LoginController(UserRepository userRepository) {
@@ -30,6 +37,22 @@ public class LoginController {
     
     @GetMapping("/login")
     public String login() {
+        return "login";
+    }
+    
+    @PostMapping("/login")
+    public String loginPost(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+        User user = userRepository.findByUsernameAndPassword(username, password);
+        if (user != null) {
+            session.setAttribute("user", user);
+            return "index";
+        }
+        return "login";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
         return "login";
     }
     
