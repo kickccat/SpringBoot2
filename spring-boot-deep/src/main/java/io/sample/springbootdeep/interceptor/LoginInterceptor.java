@@ -9,6 +9,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        return super.preHandle(request, response, handler);
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return false;
+        }
+        return true;
     }
 }
