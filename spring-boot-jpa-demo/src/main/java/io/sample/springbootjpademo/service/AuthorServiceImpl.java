@@ -33,11 +33,13 @@ public class AuthorServiceImpl implements AuthorService {
     }
     
     @Override
+    @Transactional
     public Author saveAuthor(Author author) {
         return authorRepository.save(author);
     }
     
     @Override
+    @Transactional
     public Author updateAuthor(Author author) {
         return authorRepository.save(author);
     }
@@ -48,6 +50,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
     
     @Override
+    @Transactional
     public void deleteAuthor(Long id) {
         authorRepository.deleteById(id);
     }

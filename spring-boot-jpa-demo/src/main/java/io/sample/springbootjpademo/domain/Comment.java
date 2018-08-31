@@ -18,7 +18,14 @@ public class Comment {
     @ManyToOne
     private Article article;
     
+    public Comment() {
+    }
+    
     public Comment(String content) {
         this.content = content;
+    }
+    
+    public void clearComment() {
+        this.getArticle().getComments().remove(this);
     }
 }
