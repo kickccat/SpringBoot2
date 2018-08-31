@@ -1,7 +1,6 @@
 package io.sample.springbootjpademo.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Wallet {
     
     @Id
