@@ -21,6 +21,9 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
     
+    @ManyToMany(mappedBy = "articles")
+    private List<Topic> topics = new ArrayList<>();
+    
     public void addComment(Comment comment) {
         comment.setArticle(this);
         comments.add(comment);
