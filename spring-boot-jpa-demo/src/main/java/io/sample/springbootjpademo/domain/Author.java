@@ -21,5 +21,6 @@ public class Author {
     private Date signDate;
     
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}) // 级联保存,更新和删除
+    @JoinColumn(name = "author_wallet_id")
     private Wallet wallet;
 }

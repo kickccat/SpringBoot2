@@ -5,6 +5,7 @@ import io.sample.springbootjpademo.domain.Author;
 import io.sample.springbootjpademo.domain.AuthorRepository;
 import io.sample.springbootjpademo.domain.Wallet;
 import io.sample.springbootjpademo.service.AuthorService;
+import io.sample.springbootjpademo.service.WalletService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ public class AuthorTest {
     
     @Autowired
     private AuthorService authorService;
+    
+//    @Autowired
+//    private WalletRepository walletRepository;
+    
+    @Autowired
+    private WalletService walletService;
     
     @Test
     public void saveAuthorTest() {
@@ -79,5 +86,11 @@ public class AuthorTest {
     @Test
     public void transactionalTest() {
         authorService.updateAuthor();
+    }
+    
+    @Test
+    public void findWalletTest() {
+        Wallet wallet = walletService.findById(1L);
+        System.out.println(JSON.toJSONString(wallet, true));
     }
 }
