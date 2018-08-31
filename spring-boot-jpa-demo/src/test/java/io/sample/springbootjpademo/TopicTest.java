@@ -1,5 +1,6 @@
 package io.sample.springbootjpademo;
 
+import com.alibaba.fastjson.JSON;
 import io.sample.springbootjpademo.domain.Topic;
 import io.sample.springbootjpademo.service.ArticleService;
 import io.sample.springbootjpademo.service.TopicService;
@@ -33,5 +34,26 @@ public class TopicTest {
         topic.setTheme("秘籍");
         
         topicService.saveTopic(topic);
+    }
+    
+    @Test
+    public void includeArticle() {
+        topicService.includeArticle(1L, 3L);
+    }
+    
+    @Test
+    public void findTopicById() {
+        Topic topic = topicService.findTopicById(1L);
+        System.out.println(JSON.toJSONString(topic, true)); // Error because of lazy fetching
+    }
+    
+    @Test
+    public void excludeArticle() {
+        topicService.excludeArticle(1L, 3L);
+    }
+    
+    @Test
+    public void deleteTopic() {
+        topicService.deleteTopic(1L);
     }
 }

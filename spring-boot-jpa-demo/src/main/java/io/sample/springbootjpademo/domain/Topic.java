@@ -19,5 +19,7 @@ public class Topic {
     private String theme;
     
     @ManyToMany
+    @JoinTable(name = "t_topic_article", joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"), inverseJoinColumns =
+    @JoinColumn(name = "article_id"))
     private List<Article> articles = new ArrayList<>();
 }
