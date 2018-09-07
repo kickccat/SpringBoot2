@@ -1,6 +1,5 @@
 package io.sample.blog.web;
 
-import io.sample.blog.exceptions.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,9 +9,9 @@ public class IndexController {
     @GetMapping("/")
     public String index() {
         String blog = null;
-        if (blog == null) {
-            throw new NotFoundException("Blog not exists...");
-        }
+//        if (blog == null) {
+//            throw new NotFoundException("Blog not exists...");
+//        }
         return "index";
     }
 }
