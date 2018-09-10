@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/lib/SemanticUI/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/self.css">
     <title>博客管理</title>
 </head>
@@ -156,11 +156,13 @@
         </div>
     </footer>
 
+    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
-    <script src="../../static/lib/SemanticUI/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+    <!--/*/</th:block>/*/-->
 
     <script>
         $('.menu.toggle').click(function(event) {
