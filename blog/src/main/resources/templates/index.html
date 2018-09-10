@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/self.css" th:href="@{/css/self.css}">
-    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/self.css">
+    <title>博客</title>
 </head>
 <body>
 
     <!--导航-->
-    <nav class="ui inverted attached segment m-padded-tb-min">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-min">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">Blog</h2>
-                <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
@@ -577,7 +577,7 @@
     </div>
 
     <!--底部-->
-    <footer class="ui inverted vertical segment m-padded-tb-max">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-max">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">
@@ -613,11 +613,13 @@
         </div>
     </footer>
 
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+        <script
+                src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+    <!--/*/</th:block>/*/-->
 
     <script>
         $('.menu.toggle').click(function(event) {
