@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/lib/Semantic-UI/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/self.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/self.css" th:href="@{/css/self.css}">
     <title>首页</title>
 </head>
 <body>
@@ -568,7 +568,7 @@
                         扫码关注
                     </h4>
                     <div class="ui centered card" style="width: 120px;">
-                        <img src="../static/images/WeChat.jpg" alt="" class="ui rounded image">
+                        <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded image">
                     </div>
                 </div>
             </div>
@@ -583,7 +583,8 @@
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="../static/images/WeChat.jpg" class="ui rounded image" alt="" style="width: 120px;">
+                            <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" class="ui rounded image" alt="" style="width:
+                            120px;">
                         </div>
                     </div>
                 </div>
@@ -616,7 +617,7 @@
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
-    <script src="../static/lib/Semantic-UI/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
 
     <script>
         $('.menu.toggle').click(function(event) {
