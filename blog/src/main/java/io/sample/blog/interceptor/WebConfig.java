@@ -1,6 +1,5 @@
-package io.sample.blog.config;
+package io.sample.blog.interceptor;
 
-import io.sample.blog.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
