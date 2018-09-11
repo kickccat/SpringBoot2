@@ -19,14 +19,14 @@
                 <a href="#" class="m-item item m-mobile-hide"><i class="small tags icon"></i>标签</a>
 
                 <div class="right m-item m-mobile-hide menu">
-                    <div class="ui inline dropdown item">
+                    <div class="ui dropdown item">
                         <div class="text">
-                            <img src="../../static/images/animals-picture-20.jpg" alt="" class="ui avatar rounded tiny image">
+                            <img class="ui avatar rounded tiny image" src="https://picsum.photos/100/100?image=1060">
                             Joey
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a href="#" class="item">注销</a>
+                            <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
                         </div>
                     </div>
                 </div>
@@ -37,15 +37,6 @@
         </a>
     </nav>
 
-    <div class="ui attached pointing menu">
-        <div class="ui container">
-            <div class="right menu">
-                <a href="#" class="active teal item">列表</a>
-                <a href="#" class="item">发布</a>
-            </div>
-        </div>
-    </div>
-
     <!--管理内容-->
     <div class="m-container-middle m-padded-tb-huge">
         <div class="ui container">
@@ -53,7 +44,8 @@
                 <h3>Hi, </h3>
                 <p>Joey, 欢迎登录</p>
             </div>
-            <img src="../../static/images/eugenio-mazzone-190204-unsplash.jpg" alt="" class="ui rounded bordered fluid image">
+            <img src="../../static/images/eugenio-mazzone-190204-unsplash.jpg" th:src="@{/images/eugenio-mazzone-190204-unsplash.jpg}" alt=""
+                 class="ui rounded bordered fluid image">
         </div>
     </div>
 
