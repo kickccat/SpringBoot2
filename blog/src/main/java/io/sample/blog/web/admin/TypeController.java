@@ -27,4 +27,9 @@ public class TypeController {
         model.addAttribute("page", typeService.listType(pageable));
         return "admin/types";
     }
+    
+    @GetMapping("/types/addType")
+    public String addType() {
+        return "admin/type-add";
+    }
 }
