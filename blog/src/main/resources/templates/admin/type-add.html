@@ -50,7 +50,7 @@
     <!--管理内容-->
     <div class="m-container-middle m-padded-tb-huge">
         <div class="ui container">
-            <form action="#" method="post" class="ui form">
+            <form action="#" method="post" th:action="@{/admin/types}" class="ui form">
 
                 <!--Error message-->
                 <div class="ui error message"></div>
@@ -64,7 +64,7 @@
 
                 <div class="ui right aligned container">
                     <button type="button" class="ui button" onclick="window.history.back()">返回</button>
-                    <button class="ui teal button">提交</button>
+                    <button class="ui teal submit button">提交</button>
                 </div>
             </form>
         </div>
