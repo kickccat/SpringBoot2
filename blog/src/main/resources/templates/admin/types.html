@@ -49,6 +49,14 @@
     <!--管理内容-->
     <div class="m-container-middle m-padded-tb-huge">
         <div class="ui container">
+
+            <!--Message-->
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示: </div>
+                <p th:text="${message}">操作成功。。。</p>
+            </div>
+
             <table class="ui celled table">
                 <thead>
                     <tr style="text-align: center">
@@ -137,6 +145,10 @@
 
         $('.ui.dropdown').dropdown({
             on: 'hover'
+        });
+
+        $('.message .close').on('click', function () {
+            $(this).closest('.message').fadeToggle();
         });
     </script>
 </body>
