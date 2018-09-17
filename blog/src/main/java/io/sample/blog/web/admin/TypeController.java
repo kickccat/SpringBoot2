@@ -47,6 +47,13 @@ public class TypeController {
         return "admin/type-input";
     }
     
+    @GetMapping("/types/{id}/delete")
+    public String delete(@PathVariable(name = "id") Long id, RedirectAttributes attributes) {
+        typeService.deleteTypeById(id);
+        attributes.addFlashAttribute("message", "删除成功");
+        return "redirect:/admin/types";
+    }
+    
     @PostMapping("/types")
     public String post(@Valid Type type, BindingResult result, RedirectAttributes attributes) {
         if (existType(type, result))
