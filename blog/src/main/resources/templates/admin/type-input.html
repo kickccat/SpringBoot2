@@ -50,7 +50,9 @@
     <!--管理内容-->
     <div class="m-container-middle m-padded-tb-huge">
         <div class="ui container">
-            <form action="#" method="post" th:action="@{/admin/types}" th:object="${type}" class="ui form">
+            <form action="#" method="post" th:object="${type}" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}"
+                  class="ui form">
+                <input type="hidden" name="id" th:value="*{id}">
 
                 <div class="required field">
                     <div class="ui left labeled input">

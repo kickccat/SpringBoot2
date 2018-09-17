@@ -38,24 +38,19 @@ public class TypeController {
     @GetMapping("/types/input")
     public String add(Model model) {
         model.addAttribute("type", new Type());
-        return "type-input";
+        return "admin/type-input";
     }
     
     @GetMapping("/types/{id}/input")
     public String editType(@PathVariable(name = "id") Long id, Model model) {
         model.addAttribute("type", typeService.getTypeById(id));
-        return "type-input";
+        return "admin/type-input";
     }
     
     @PostMapping("/types")
     public String post(@Valid Type type, BindingResult result, RedirectAttributes attributes) {
-        Type existType = typeService.getTypeByName(type.getName());
-        if (existType != null) {
-            result.rejectValue("name", "nameError", "分类已存在");
-        }
-        if (result.hasErrors()) {
-            return "type-input";
-        }
+        if (existType(type, result))
+            return "admin/type-input";
         Type t = typeService.saveType(type);
         if (t == null) {
             attributes.addFlashAttribute("message", "分类不能为空");
@@ -63,5 +58,26 @@ public class TypeController {
             attributes.addFlashAttribute("message", "新增分类");
         }
         return "redirect:/admin/types";
+    }
+    
+    @PostMapping("/types/{id}")
+    public String editPost(@Valid Type type, BindingResult result, @PathVariable(name = "id") Long id, RedirectAttributes attributes) {
+        if (existType(type, result))
+            return "admin/type-input";
+        Type t = typeService.updateTypeById(id, type);
+        if (t == null) {
+            attributes.addFlashAttribute("message", "分类不能为空, 更新失败");
+        } else {
+            attributes.addFlashAttribute("message", "更新成功");
+        }
+        return "redirect:/admin/types";
+    }
+    
+    private boolean existType(@Valid Type type, BindingResult result) {
+        Type existType = typeService.getTypeByName(type.getName());
+        if (existType != null) {
+            result.rejectValue("name", "nameError", "分类已存在");
+        }
+        return result.hasErrors();
     }
 }
