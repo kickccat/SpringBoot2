@@ -23,7 +23,7 @@ public class Blog {
     private Integer views;
     private boolean donation;
     private boolean shareRight;
-    private boolean commendable;
+    private boolean commentable;
     private boolean publishable;
     private boolean recommendable;
     

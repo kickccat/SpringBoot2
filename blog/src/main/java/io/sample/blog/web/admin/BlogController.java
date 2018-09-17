@@ -1,5 +1,6 @@
 package io.sample.blog.web.admin;
 
+import io.sample.blog.model.Blog;
 import io.sample.blog.searchvo.BlogQuery;
 import io.sample.blog.service.BlogService;
 import io.sample.blog.service.TypeService;
@@ -17,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class BlogController {
     
-    private final BlogService blogService;
+    private static final String PUBLISHER = "admin/blog-publisher";
+    public static final String LIST = "admin/blogs";
+    public static final String REDIRECT_LIST = "redirect:admin/blogs";
     
+    private final BlogService blogService;
     private final TypeService typeService;
     
     @Autowired
@@ -40,5 +44,12 @@ public class BlogController {
                         BlogQuery blog) {
         model.addAttribute("page", blogService.listBlogs(pageable, blog));
         return "admin/blogs :: blogList";
+    }
+    
+    @GetMapping("/blogs/publisher")
+    public String publish(Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("blog", new Blog());
+        return PUBLISHER;
     }
 }
