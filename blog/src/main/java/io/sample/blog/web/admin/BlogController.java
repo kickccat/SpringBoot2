@@ -1,6 +1,7 @@
 package io.sample.blog.web.admin;
 
 import io.sample.blog.model.Blog;
+import io.sample.blog.model.User;
 import io.sample.blog.searchvo.BlogQuery;
 import io.sample.blog.service.BlogService;
 import io.sample.blog.service.TypeService;
@@ -13,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin")
@@ -51,5 +55,19 @@ public class BlogController {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("blog", new Blog());
         return PUBLISHER;
+    }
+    
+    @PostMapping("/blogs")
+    public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
+        blog.setUser((User) session.getAttribute("user"));
+        blog.setType(typeService.getTypeById(blog.getType().getId()));
+        
+        Blog blog1 = blogService.saveBlog(blog);
+        if (blog1 == null) {
+            attributes.addFlashAttribute("message", "操作失败");
+        } else {
+            attributes.addFlashAttribute("message", "操作成功");
+        }
+        return REDIRECT_LIST;
     }
 }

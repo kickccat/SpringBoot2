@@ -116,6 +116,13 @@
                         </tr>
                     </tfoot>
                 </table>
+
+                <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                    <i class="close icon"></i>
+                    <div class="header">提示: </div>
+                    <p th:text="${message}">操作成功...</p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -177,6 +184,10 @@
             on: 'hover'
         });
 
+        $('.message .close').on('click', function () {
+            $(this).closest('.message').fadeToggle();
+        });
+
         function page(obj) {
             $('[name="page"]').val($(obj).data('page'));
             loadData();
@@ -185,7 +196,7 @@
         $('#search-btn').click(function () {
             loadData();
         });
-        
+
         function loadData() {
             $('#table-container').load(/*[[@{/admin/blogs/search}]]*/'/admin/blogs/search', {
                 title: $('[name="title"]').val(),
