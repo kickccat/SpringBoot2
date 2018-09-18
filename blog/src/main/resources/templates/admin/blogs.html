@@ -68,7 +68,9 @@
                                     <!--<div class="item" data-value="2">技术问题</div>-->
                                 </div>
                             </div>
-                            <button id="clear-btn" class="ui compact button">clear</button>
+
+                            <button id="clear-btn" class="ui clear compact button">clear</button>
+
                         </div>
                     </div>
 
@@ -199,6 +201,10 @@
             $('[name="page"]').val($(obj).data('page'));
             loadData();
         }
+
+        $('#clear-btn').on('click', function () {
+            $('.ui.type.dropdown').dropdown('clear');
+        });
 
         $('#search-btn').click(function () {
             $('[name="page"]').val(0);
