@@ -108,7 +108,7 @@
                             <td th:text="${blog.publishable} ? '发布':'草稿'">草稿</td>
                             <td th:text="${blog.updateTime}">2018-09-06</td>
                             <td>
-                                <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
+                                <a href="#" th:href="@{/admin/blogs/{id}/publisher(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
                                 <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
                             </td>
                         </tr>

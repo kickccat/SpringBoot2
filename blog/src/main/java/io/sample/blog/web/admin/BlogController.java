@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -44,7 +45,7 @@ public class BlogController {
         model.addAttribute("tags", tagService.listTag());
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlogs(pageable, blog));
-        return "admin/blogs";
+        return LIST;
     }
     
     @PostMapping("/blogs/search")
@@ -55,10 +56,18 @@ public class BlogController {
     }
     
     @GetMapping("/blogs/publisher")
-    public String publish(Model model) {
-        model.addAttribute("types", typeService.listType());
-        model.addAttribute("tags", tagService.listTag());
+    public String publisher(Model model) {
+        setTypeAndTag(model);
         model.addAttribute("blog", new Blog());
+        return PUBLISHER;
+    }
+    
+    @GetMapping("/blogs/{id}/publisher")
+    public String editPublisher(@PathVariable(name = "id") Long id, Model model) {
+        setTypeAndTag(model);
+        Blog blog = blogService.getBlog(id);
+        blog.init();
+        model.addAttribute("blog", blog);
         return PUBLISHER;
     }
     
@@ -75,5 +84,10 @@ public class BlogController {
             attributes.addFlashAttribute("message", "操作成功");
         }
         return REDIRECT_LIST;
+    }
+    
+    private void setTypeAndTag(Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("tags", tagService.listTag());
     }
 }
