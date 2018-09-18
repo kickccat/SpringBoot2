@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TagServiceImpl implements TagService {
@@ -83,7 +84,7 @@ public class TagServiceImpl implements TagService {
     private List<Long> stringToList(String ids) {
         List<Long> list = new ArrayList<>();
         if (!"".equals(ids) && ids != null) {
-            list = Collections.singletonList(Long.parseLong(Arrays.toString(ids.split(","))));
+            list = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toCollection(ArrayList::new));
         }
         return list;
     }

@@ -55,8 +55,9 @@ public class TagController {
     
     @PostMapping("/tags")
     public String post(@Valid Tag tag, BindingResult result, RedirectAttributes attributes) {
-        if (existTag(tag, result))
+        if (existTag(tag, result)) {
             return "admin/tag-input";
+        }
         Tag t = tagService.saveTag(tag);
         if (t == null) {
             attributes.addFlashAttribute("message", "标签不能为空");
@@ -68,8 +69,9 @@ public class TagController {
     
     @PostMapping("/tags/{id}")
     public String editPost(@Valid Tag tag, BindingResult result, @PathVariable(name = "id") Long id, RedirectAttributes attributes) {
-        if (existTag(tag, result))
+        if (existTag(tag, result)) {
             return "admin/tag-input";
+        }
         Tag t = tagService.updateTag(id, tag);
         if (t == null) {
             attributes.addFlashAttribute("message", "标签不能为空, 更新失败");

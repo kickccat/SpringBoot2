@@ -66,9 +66,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="type, iterStat : ${page.content}" style="text-align: center">
+                    <tr th:each="tag, iterStat : ${page.content}" style="text-align: center">
                         <td th:text="${iterStat.count}">1</td>
-                        <td th:text="${type.name}">一万个小时</td>
+                        <td th:text="${tag.name}">一万个小时</td>
                         <td>
                             <a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
                             <a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui mini red basic button">删除</a>

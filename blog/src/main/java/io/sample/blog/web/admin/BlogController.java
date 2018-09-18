@@ -24,8 +24,8 @@ import javax.servlet.http.HttpSession;
 public class BlogController {
     
     private static final String PUBLISHER = "admin/blog-publisher";
-    public static final String LIST = "admin/blogs";
-    private static final String REDIRECT_LIST = "redirect:admin/blogs";
+    private static final String LIST = "admin/blogs";
+    private static final String REDIRECT_LIST = "redirect:/admin/blogs";
     
     private final BlogService blogService;
     private final TypeService typeService;
