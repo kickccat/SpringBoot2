@@ -54,6 +54,7 @@ public class BlogServiceImpl implements BlogService {
         }, pageable);
     }
     
+    @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
         blog.setCreateTime(new Date());
@@ -62,6 +63,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(blog);
     }
     
+    @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Optional<Blog> blog1 = blogRepository.findById(id);
@@ -72,6 +74,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(blog1.get());
     }
     
+    @Transactional
     @Override
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
