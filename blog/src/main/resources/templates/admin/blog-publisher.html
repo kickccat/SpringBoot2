@@ -122,14 +122,14 @@
 
                 <div class="inline fields">
                     <div class="field">
-                        <div class="ui checked checkbox">
-                            <input type="checkbox" id="recommendable" name="recommendable" class="hidden">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="recommendable" name="recommendable" checked th:checked="*{recommendable}" class="hidden">
                             <label for="recommendable" style="color: darkorange">推荐</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="shareRight" name="shareRight" class="hidden">
+                            <input type="checkbox" id="shareRight" name="shareRight" th:checked="*{shareRight}" class="hidden">
                             <label for="shareRight" style="color: darkorange">转载声明</label>
                         </div>
                     </div>
