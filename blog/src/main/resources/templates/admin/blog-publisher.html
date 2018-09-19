@@ -51,7 +51,7 @@
     <div class="m-container m-padded-tb-huge">
         <div class="ui container">
             <form id="blog-form" action="#" th:object="${blog}" th:action="@{/admin/blogs}" method="post" class="ui form">
-                <input type="hidden" name="publishable">
+                <input type="hidden" name="publishable" th:value="*{publishable}">
                 <input type="hidden" name="id" th:value="*{id}">
 
                 <!--Error message-->
@@ -119,6 +119,10 @@
                         <label class="ui teal basic label">首图</label>
                         <input type="text" name="firstImg" placeholder="首图引用地址" th:value="*{firstImg}">
                     </div>
+                </div>
+
+                <div class="required field">
+                    <textarea name="description" id="#" th:text="*{description}" placeholder="博客描述..." maxlength="200"></textarea>
                 </div>
 
                 <div class="inline fields">
@@ -239,7 +243,8 @@
                 title: {identifier: 'title', rules: [{type: 'empty', prompt: '标题：请输入博客标题'}]},
                 content: {identifier: 'content', rules: [{type: 'empty', prompt: '请输入博客内容'}]},
                 typeId: {identifier: 'typeId', rules: [{type: 'empty', prompt: '请输入博客分类'}]},
-                firstImg: {identifier: 'firstImg', rules: [{type: 'empty', prompt: '请加入博客首图'}]}
+                firstImg: {identifier: 'firstImg', rules: [{type: 'empty', prompt: '请加入博客首图'}]},
+                description: {identifier: 'description', rules: [{type: 'empty', prompt: '请加上博客描述'}]}
             }
         });
 

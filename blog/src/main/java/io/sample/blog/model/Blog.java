@@ -30,6 +30,7 @@ public class Blog {
     private boolean commendable;
     private boolean publishable;
     private boolean recommendable;
+    private String description;
     
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createTime;
