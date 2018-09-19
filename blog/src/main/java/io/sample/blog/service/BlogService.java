@@ -15,6 +15,8 @@ public interface BlogService {
     
     Page<Blog> listBlogs(Pageable pageable);
     
+    Page<Blog> listBlogs(String query, Pageable pageable);
+    
     List<Blog> listBlogTop(Integer size);
     
     Blog saveBlog(Blog blog);
