@@ -5,10 +5,13 @@ import io.sample.blog.exceptions.NotFoundException;
 import io.sample.blog.model.Blog;
 import io.sample.blog.model.Type;
 import io.sample.blog.searchvo.BlogQuery;
+import io.sample.blog.utils.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +57,18 @@ public class BlogServiceImpl implements BlogService {
         }, pageable);
     }
     
+    @Override
+    public Page<Blog> listBlogs(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+    
+    @Override
+    public List<Blog> listBlogTop(Integer size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "updateTime");
+        Pageable pageable = PageRequest.of(0, size, sort);
+        return blogRepository.findTop(pageable);
+    }
+    
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
@@ -74,7 +89,8 @@ public class BlogServiceImpl implements BlogService {
         if (!blog1.isPresent()) {
             throw new NotFoundException("该博客不存在");
         }
-        BeanUtils.copyProperties(blog, blog1.get());
+        BeanUtils.copyProperties(blog, blog1.get(), MyBeanUtils.getNullPropertyNames(blog)); // Not transfer the null value fields
+        blog1.get().setUpdateTime(new Date());
         return blogRepository.save(blog1.get());
     }
     
