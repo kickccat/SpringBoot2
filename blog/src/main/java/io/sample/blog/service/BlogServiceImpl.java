@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,6 +76,14 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Page<Blog> listBlogs(Pageable pageable) {
         return blogRepository.findAll(pageable);
+    }
+    
+    @Override
+    public Page<Blog> listBlogs(Long tagId, Pageable pageable) {
+        return blogRepository.findAll((Specification<Blog>) (root, criteriaQuery, criteriaBuilder) -> {
+            Join join = root.join("tags");
+            return criteriaBuilder.equal(join.get("id"), tagId);
+        }, pageable);
     }
     
     @Override
