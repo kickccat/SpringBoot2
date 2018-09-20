@@ -436,19 +436,21 @@ h5,h6{font-size:1em;}
                 </div>
 
                 <!--赞赏-->
-                <div class="ui center aligned basic segment">
-                    <button id="paymentBtn" class="ui orange basic circular button">赞赏</button>
-                </div>
-                <div class="ui payQR flowing popup transition hidden">
-                    <div class="ui orange basic label">
-                        <div class="ui small images">
-                            <div class="ui image">
-                                <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image">
-                                <div>微信支付</div>
-                            </div>
-                            <div class="ui image">
-                                <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image">
-                                <div>支付宝支付</div>
+                <div th:if="${blog.donation}">
+                    <div class="ui center aligned basic segment">
+                        <button id="paymentBtn" class="ui orange basic circular button">赞赏</button>
+                    </div>
+                    <div class="ui payQR flowing popup transition hidden">
+                        <div class="ui orange basic label">
+                            <div class="ui small images">
+                                <div class="ui image">
+                                    <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image">
+                                    <div>微信支付</div>
+                                </div>
+                                <div class="ui image">
+                                    <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image">
+                                    <div>支付宝支付</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -456,7 +458,7 @@ h5,h6{font-size:1em;}
             </div>
 
             <!--博客信息-->
-            <div class="ui attached positive message">
+            <div class="ui attached positive message" th:if="${blog.shareRight}">
                 <div class="ui middle aligned grid">
                     <!--left-->
                     <div class="ui eleven wide column">
@@ -476,7 +478,7 @@ h5,h6{font-size:1em;}
             </div>
 
             <!--留言区域-->
-            <div class="ui bottom attached segment">
+            <div class="ui bottom attached segment" th:if="${blog.commendable}">
                 <!--留言列表-->
                 <div id="comment-container" class="ui teal segment">
                     <div th:fragment="commentList">
@@ -717,7 +719,7 @@ h5,h6{font-size:1em;}
         });
 
         var serurl = /*[[#{blog.serurl}]]*/"127.0.0.1:8080"; // "https://kickccat.github.io/"
-        var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
+        var url = /*[[@{/blogs/{id}(id=${blog.id})}]]*/"";
         var qrcode = new QRCode("qrcode", {
             text: serurl + url,
             width: 110,

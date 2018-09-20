@@ -57,7 +57,7 @@
                         <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
                             <div class="ui middle aligned mobile reversed stackable grid">
                                 <div class="ui eleven wide column">
-                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black"
+                                    <h3 class="ui header"><a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank" class="m-black"
                                                              th:text="${blog.title}">从围城到围城</a></h3>
                                     <p class="m-text" th:text="|${blog.description}......|">十有五而志于学，二十弱冠，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩...</p>
                                     <div class="ui grid">
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="five wide column">
-                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                    <a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank">
                                         <img src="https://picsum.photos/800/500?image=1065" th:src="@{${blog.firstImg}}" alt=""
                                              class="ui rounded image">
                                     </a>
@@ -121,13 +121,14 @@
                                     <i class="idea icon"></i>分类
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                    <a href="#" th:href="@{/types/-1}" target="_blank">more <i
+                                            class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
                             <div class="ui fluid vertical menu">
-                                <a href="#" class="item" th:each="type : ${types}">
+                                <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item" th:each="type : ${types}">
                                     <span th:text="${type.name}">技术文章</span>
                                     <div class="ui teal left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                                 </a>
@@ -167,12 +168,13 @@
                                     <i class="tags icon"></i>标签
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                    <a href="#" th:href="@{/tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
-                            <a href="#" target="_blank" class="ui blue left pointing label m-margin-tb-small" th:each="tag : ${tags}">
+                            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank"
+                               class="ui blue left pointing label m-margin-tb-small" th:each="tag : ${tags}">
                                 <span th:text="${tag.name}">世界观</span>
                                 <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                             </a>
@@ -225,7 +227,7 @@
                             <i class="bookmark icon"></i>最新推荐
                         </div>
                         <div class="ui segment" th:each="blog : ${recommendableBlogs}">
-                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">
+                            <a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">
                                 世界真奇妙</a>
                         </div>
 

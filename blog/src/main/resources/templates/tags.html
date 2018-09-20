@@ -101,7 +101,7 @@
                     <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="ui eleven wide column">
-                                <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black"
+                                <h3 class="ui header"><a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank" class="m-black"
                                                          th:text="${blog.title}">从围城到围城</a></h3>
                                 <p class="m-text" th:text="|${blog.description}......|">十有五而志于学，二十弱冠，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩...</p>
                                 <div class="ui grid">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                <a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank">
                                     <img src="https://picsum.photos/800/500?image=1065" th:src="@{${blog.firstImg}}" alt=""
                                          class="ui rounded image">
                                 </a>
