@@ -42,42 +42,55 @@
                         <h3 class="ui teal header">归档</h3>
                     </div>
                     <div class="right aligned column">
-                        共<h2 class="ui orange header m-inline-block m-text-thin"> 16 </h2>篇博客
+                        共<h2 class="ui orange header m-inline-block m-text-thin" th:text="${blogCount}"> 16 </h2>篇博客
                     </div>
                 </div>
             </div>
 
-            <h3 class="ui center aligned header">2018</h3>
-            <div class="ui fluid vertical menu">
-                <a href="#" target="_blank " class="item">
-                    <span>
-                    <i class="tiny circle teal icon"></i>关于面试
-                        <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
-                    </span>
-                    <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
-                </a>
-                <a href="#" target="_blank " class="item">
-                    <span>
-                    <i class="tiny circle teal icon"></i>关于面试
-                        <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
-                    </span>
-                    <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
-                </a>
-                <a href="#" target="_blank " class="item">
-                    <span>
-                    <i class="tiny circle teal icon"></i>关于面试
-                        <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
-                    </span>
-                    <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
-                </a>
-                <a href="#" target="_blank " class="item">
-                    <span>
-                    <i class="tiny circle teal icon"></i>关于面试
-                        <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
-                    </span>
-                    <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
-                </a>
-            </div>
+            <th:block th:each="item : ${archiveMap}">
+                <h3 class="ui center aligned header" th:text="${item.key}">2018</h3>
+                <div class="ui fluid vertical menu">
+
+                    <a href="#" th:href="@{/blogs/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${item.value}">
+                        <span>
+                            <i class="tiny circle teal icon"></i>
+                            <span th:text="${blog.title}">关于面试</span>
+                            <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin"
+                                  th:text="${#dates.format(blog.updateTime, 'MMMdd')}">9月03日</span>
+                        </span>
+                        <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin" th:text="${blog.flag}">原创</div>
+                    </a>
+
+                    <!--/*-->
+                    <a href="#" target="_blank " class="item">
+                        <span>
+                        <i class="tiny circle teal icon"></i>关于面试
+                            <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
+                        </span>
+                        <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
+                    </a>
+
+                    <a href="#" target="_blank " class="item">
+                        <span>
+                        <i class="tiny circle teal icon"></i>关于面试
+                            <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
+                        </span>
+                        <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
+                    </a>
+
+                    <a href="#" target="_blank " class="item">
+                        <span>
+                        <i class="tiny circle teal icon"></i>关于面试
+                            <span class="ui teal basic left pointing label m-padded-tb-mini m-text-thin">9月03日</span>
+                        </span>
+                        <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
+                    </a>
+                    <!--*/-->
+
+                </div>
+            </th:block>
+
+            <!--/*-->
             <h3 class="ui center aligned header">2017</h3>
             <div class="ui fluid vertical menu">
                 <a href="#" target="_blank " class="item">
@@ -171,11 +184,15 @@
                     <div class="ui green basic left pointing label m-padded-tb-mini m-text-thin">原创</div>
                 </a>
             </div>
+            <!--*/-->
+
         </div>
     </div>
+
     <br/>
     <br/>
     <br/>
+
     <!--底部-->
     <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-max">
         <div class="ui center aligned container">
@@ -221,7 +238,7 @@
     <!--/*/</th:block>/*/-->
 
     <script>
-        $('.menu.toggle').click(function(event) {
+        $('.menu.toggle').click(function (event) {
             event.preventDefault();
             $('.m-item').toggleClass('m-mobile-hide');
         });
